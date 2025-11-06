@@ -1,0 +1,706 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hikes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="539234d4-e131-4ec9-b629-2645d259e0df" class="page sans"><header><img class="page-cover-image" src="../images/IMG_5169.jpeg" style="object-position:center 50%"/><h1 class="page-title">Hikes</h1><p class="page-description"></p></header><div class="page-body"><p id="9e834814-d830-4678-ad08-89244688a16f" class="">I’m fortunate to live in Utah, an incredibly beautiful place. I spend a lot of time hiking and exploring. Each hike I try to find some challenging climbs, snap some great views, and find a cool rock.</p><hr id="660746dd-e9b2-46e1-aa67-44352789b60d"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">4.18.2025: White Dome Nature Preserve</summary><div class="indented"><p id="1da26fec-e2cc-8091-97f3-e12578158e7c" class="">This is a unique place that is near our home. At one point it was in the middle of nowhere, but now it is surrounded by a school, airport, and warehouses. But the cool thing is when you get into the middle of the preserve you feel like you are in the middle of nowhere. The highlight of the preserve is the Dwarf Bear Poppy. This is the only place on earth that it grows. I there a bit early for the poppies to be blooming but saw a few small ones.</p><div id="1da26fec-e2cc-805c-8a75-d638d832d1e3" class="column-list"><div id="1da26fec-e2cc-806e-b74b-fb0803ec65c3" style="width:50%" class="column"><figure id="1da26fec-e2cc-801e-80d4-f8f609dd8e75" class="image"><a href="Hikes/IMG_0463_Medium.jpeg"><img style="width:318px" src="../images/IMG_0463_Medium.jpeg"/></a></figure></div><div id="1da26fec-e2cc-80c9-8cfd-d806566276bc" style="width:50%" class="column"><figure id="1da26fec-e2cc-80e6-96e7-cd7682a63964" class="image"><a href="Hikes/IMG_0462_Medium.jpeg"><img style="width:318px" src="../images/IMG_0462_Medium.jpeg"/></a></figure></div></div><h3 id="1da26fec-e2cc-8066-a926-c4dc81f9164e" class="">Favorite Picture</h3><figure id="1da26fec-e2cc-8080-a16d-d6ca7bec6ef1" class="image"><a href="Hikes/IMG_0457_Large.jpeg"><img style="width:682px" src="../images/IMG_0457_Large.jpeg"/></a><figcaption>This is the biologic soil crust that the dwarf poppies rely on to grow. You can see the contrast of it compared to regular dirt in the lower left. It is a living organism and is very delicate so the preserve works hard to keep visitors off the soil crust.</figcaption></figure><h3 id="1da26fec-e2cc-8020-bbce-dcb1f616bfe5" class="">Favorite View</h3><figure id="1da26fec-e2cc-807e-b2d1-c5658776165f" class="image"><a href="Hikes/IMG_0461_Large.jpeg"><img style="width:682px" src="../images/IMG_0461_Large.jpeg"/></a><figcaption>Taken from one of the peaks in the preserve looking out towards the Little Black Mountain area in Arizona.</figcaption></figure><h3 id="1da26fec-e2cc-801c-bb51-e7f222d104a2" class="">Favorite Rock</h3><figure id="1da26fec-e2cc-804e-9827-e46af1c69186" class="image"><a href="Hikes/IMG_0464_Large.jpeg"><img style="width:682px" src="../images/IMG_0464_Large.jpeg"/></a><figcaption>Lots of cool and unique rocks here. Many with features that look similar to the soil crust.</figcaption></figure></div></details><hr id="1da26fec-e2cc-8022-af1b-fa161a9553b6"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">4.13.2025: Atkinville - Virgin River Trail</summary><div class="indented"><h3 id="1d526fec-e2cc-8088-9510-f0c8ea0f2da4" class="">Favorite Picture</h3><figure id="1d526fec-e2cc-80ea-a4ae-fd3b712495b3" class="image"><a href="Hikes/0367A991-4BC9-47BA-9EF8-D858DC10AFA8_1_105_c.jpeg"><img style="width:682px" src="../images/0367A991-4BC9-47BA-9EF8-D858DC10AFA8_1_105_c.jpeg"/></a></figure><h3 id="1d526fec-e2cc-80e0-8879-de099c612b19" class="">Favorite View</h3><figure id="1d526fec-e2cc-80d5-b2f9-e611f1e70aa2" class="image"><a href="Hikes/9C55948E-0976-4DEC-8FC2-E0EF1942D7DF_1_105_c.jpeg"><img style="width:682px" src="../images/9C55948E-0976-4DEC-8FC2-E0EF1942D7DF_1_105_c.jpeg"/></a></figure><h3 id="1d526fec-e2cc-808e-939e-da88d7b51a60" class="">Favorite Rock</h3><figure id="1d526fec-e2cc-8026-8491-f4985d72b7bc" class="image"><a href="Hikes/93556AFA-0026-456D-9D35-16BB53C934D0_1_105_c.jpeg"><img style="width:681.984375px" src="../images/93556AFA-0026-456D-9D35-16BB53C934D0_1_105_c.jpeg"/></a></figure></div></details><hr id="1d526fec-e2cc-8050-8b49-d00336248716"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">12.21.2024: Upper and Lower Secret Sauce</summary><div class="indented"><p id="16426fec-e2cc-806c-b859-fba8da58aaf9" class="">Been awhile since I’ve been out on a hike, summer was busier than I wanted and kind of slipped away. So spur of the moment yesterday I loaded my dog into the truck and found a trail. We went to a local spot that is in between our house and the airport. it was a beautiful day and great weather but we only ran into one other person out there. It is a good and bad feeling to have places like this. In one way I love being so close to incredible outdoor experiences, but it is also sad to see humans taking over nature.</p><h3 id="16426fec-e2cc-8083-a8b8-dd6cc36d8103" class="">Favorite Picture</h3><figure id="16426fec-e2cc-80d5-b60e-c87b0221f5f1" class="image"><a href="Hikes/IMG_0147.jpeg"><img style="width:4032px" src="../images/IMG_0147.jpeg"/></a><figcaption>The pup is never happier than she is on long hikes.</figcaption></figure><h3 id="16426fec-e2cc-80b9-9bf0-d718ad70d525" class="">Favorite View</h3><figure id="16426fec-e2cc-802f-bba8-fb4615aa78d3" class="image"><a href="Hikes/IMG_0149.jpeg"><img style="width:4032px" src="../images/IMG_0149.jpeg"/></a><figcaption>This picture captures my conflicting perspective well. It’s incredible to live right against the mountains in the distance, but also a bummer to see people slowly taking over the land.</figcaption></figure><h3 id="16426fec-e2cc-806b-a383-e0824e173c08" class="">Favorite Rock</h3><figure id="16426fec-e2cc-80b6-aa41-c421889a28da" class="image"><a href="Hikes/IMG_0144.jpeg"><img style="width:3024px" src="../images/IMG_0144.jpeg"/></a><figcaption>I loved the contrast of this smooth red rock with the layered and jagged multi-color one.</figcaption></figure></div></details><hr id="16426fec-e2cc-8005-8486-efff525e2129"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">7.3.2024: Pushing Tin</summary><div class="indented"><p id="8cf63b2d-fe6b-45ca-937f-dcfeba257901" class="">If you are a smart person you probably don’t go hiking in the desert when it is 110 degrees, but I have never claimed to be smart. I’ve been to this area a ton since it is nearby, but haven’t done this exact route. There wasn’t a lot to see, just lots of sun, sand, and rocks. But I still had a good time, even though I had to turn back early because I was running low on water.</p><h3 id="84e06520-9645-4664-80f5-cccf6e34500d" class="">Favorite Picture</h3><figure id="32ad83e1-82fe-44d3-b9bc-9015512e56d7" class="image"><a href="Hikes/8e06540d-60be-4035-bdb4-fe65a1fd8a3a.png"><img style="width:608.1576354679803px" src="../images/8e06540d-60be-4035-bdb4-fe65a1fd8a3a.png"/></a><figcaption>I didn’t see another person while I was out there but I hoped that if I got lost this plane would see me and rescue me.</figcaption></figure><h3 id="51c55dfa-14de-453c-8132-110859375604" class="">Favorite View</h3><figure id="271eb67d-1834-41e6-869b-eced117087b6" class="image"><a href="Hikes/IMG_5865.jpeg"><img style="width:680px" src="../images/IMG_5865.jpeg"/></a><figcaption>When I’m out in the middle of nowhere, I always wonder how structures like this bridge get here. Who carried all the materials out here and built this?</figcaption></figure><h3 id="8b9c9b7e-68a9-4dac-8171-2b4fa8b9d60a" class="">Favorite Rock</h3><figure id="0d36cf2f-9118-4dc8-99ae-5fd536eaadbd" class="image"><a href="Hikes/d853cad2-aadf-43bc-b8f5-be80cff0d8ea.png"><img style="width:463.0969609261939px" src="../images/d853cad2-aadf-43bc-b8f5-be80cff0d8ea.png"/></a><figcaption>Had to pick up this half moon.</figcaption></figure></div></details><hr id="4f08128a-e368-4dc9-8301-38497560e187"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">4.27.2024: Ranger Bart Trail - Virgin River</summary><div class="indented"><p id="86c75e69-da63-40a8-8260-9716614115f6" class="">Can’t believe it has been 4 months since I was out on a hike??? I really wasted the winter months. To be fair we did go on a few family hikes on some local trails but nothing new or too adventurous. This hike was supposed to be pretty relaxed but we wandered off the trail and ended up going through some rocky and exciting terrain. To be honest, I almost turned around when I got to the trailhead because there we dark clouds forming, but we decided to brave it. For the most part the weather cleared up but we did get rained on a bit. This hike is named after a local who did a lot for the area. There is a designated trail but there are tons of offshoots and we tried a bunch of them out.</p><h3 id="70f8b191-d9f2-4f04-b9c7-51f5e42955cc" class="">Favorite Picture</h3><figure id="f3e2b60b-f918-440d-bcbf-acb231b3c2c8" class="image"><a href="Hikes/Untitled.jpeg"><img style="width:680px" src="../images/Untitled.jpeg"/></a><figcaption>This wash kept getting narrower and narrower as we went. Eventually, it was a more of a slot canyon. In quite a few slots I had to pick the dog up and lift her onto a ledge and then scramble up myself.</figcaption></figure><h3 id="5f60b3c3-19a6-48eb-8feb-f697f75268cd" class="">Favorite View</h3><figure id="465d048e-3846-4319-9b30-da6daf112d36" class="image"><a href="Hikes/Untitled%201.jpeg"><img style="width:672px" src="../images/Untitled%201.jpeg"/></a><figcaption>Luna loved roaming around out in the middle of nowhere, she smiled most of the trip.</figcaption></figure><h3 id="8c3b50d3-0eea-4a8f-ad0a-e1fcbbf2bc7a" class="">Favorite Rock</h3><figure id="6ff1c71c-eb72-43a0-8d4b-7319a85f1395" class="image"><a href="Hikes/Untitled.png"><img style="width:680px" src="../images/Untitled.png"/></a><figcaption>Couldn’t pick just one today, had to bring a few back. They were extra weight in my pack, part of my plan to make myself tougher.</figcaption></figure></div></details><hr id="3ac73f45-5829-4700-842f-0198557460f8"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">12.31.2023: Aspiration Trail - American Flag Branch</summary><div class="indented"><p id="70d312b6-ecd5-4552-a283-29d31fc7e1d3" class="">Second hike of the week can’t complain about that, also a great way to close out the year. We have been to the Aspiration Trail before. It ia a local favorite, everyone who comes paints rocks and leaves them along the trail. Last time we went to the south peak which is home to huge piles and these rocks. This time we took the north fork which leads to an American Flag , as well as rocks. Even though it was the middle of winter we felt great in t-shirts as we hiked. I only took one picture this time since I was wranging the dog and daughter but I really love the one I did take.</p><h3 id="a4c2508a-cf94-4f7c-a71a-ce7188fb3fc7" class="">Favorite Picture</h3><figure id="e98ce64f-1a90-473c-8d9b-52b82d40b593" class="image"><a href="Hikes/IMG_5184_Large.jpeg"><img style="width:960px" src="../images/IMG_5184_Large.jpeg"/></a><figcaption>This is the base of the column that holds the American flag. The in background you can see the ridge we climbed last time.</figcaption></figure></div></details><hr id="37f5e020-43e4-4225-a3d7-e9361838758f"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">12.28.2023: Zion National Park - The Watchmen</summary><div class="indented"><p id="654d8006-6473-4cb4-851d-839342754eb2" class="">Spent some time between Christmas and New Year exploring our backyard. We snuck away from the kids for a few days to adventure in Zion National Park. It was busier than expected so we didn’t get to do as much as we wanted. But we did make it to the top of this outlook where you can see up and down the park. Even though it was December we hiked in tshirts since the weather was so nice. It was one of the best hikes I’ve done in a while. Crazy that we can drive for under an hour and be surrounded by things like this.</p><h3 id="d1296c31-7e3f-4920-be16-4f1ed34d9184" class="">Favorite View</h3><figure id="6d2dd2f1-634f-417f-89d4-d04dbdf20c32" class="image"><a href="Hikes/IMG_5169_Large.jpeg"><img style="width:1280px" src="../images/IMG_5169_Large.jpeg"/></a><figcaption>This view came after only an hour or so of hiking. But to be fair it’s hard not to find an incredible view from anywhere in the park.</figcaption></figure><h3 id="481d2d38-cac4-4eed-8d1b-9e4092e4d21e" class="">Favorite Picture</h3><figure id="0d24b6ca-6539-4904-8bc5-577cdae1be1b" class="image"><a href="Hikes/IMG_5173_Large.jpeg"><img style="width:960px" src="../images/IMG_5173_Large.jpeg"/></a><figcaption>We don’t often get to go out hiking on our own. It was great to spend time together and try a trail er hadn’t before.</figcaption></figure><h3 id="3ce44206-99e1-4d0e-a42c-1b8dfe1a93c3" class="">Favorite Rock</h3><figure id="9c5e9926-c10a-4471-8032-b920dd2f7e2b" class="image"><a href="Hikes/IMG_5177_Large.jpeg"><img style="width:1280px" src="../images/IMG_5177_Large.jpeg"/></a><figcaption>There were a lot of boulders like this, made from a ton of small layers, but this one was the biggest and most striking.</figcaption></figure></div></details><hr id="7080ae41-c378-4173-8071-870a79e9db79"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">8.19.2023: Claim Jumper - East Approach</summary><div class="indented"><p id="0e3a8fad-ed0e-4fab-87af-8058998b6e82" class="">I have hiked this before and didn&#x27;t really intend to hike it this day. But the trail is maybe half a mile from my house. So a random run through my neighborhood turned into me running this. It was a solid day for it, really sunny but not too hot. I saw a bunch of rabbits and snakes but didn’t get any pictures of those sadly. There was also a big lizard that thought the middle of the trail was the best place to hangout. It scared me on the way up and the way back down, it wanted to play chicken I guess and didn’t move until I almost stepped on it.</p><h3 id="071d194c-8c33-4468-9b11-26b10d1b8e31" class="">Favorite View</h3><figure id="b37381b7-9d13-450b-84b4-8f64673637fe" class="image"><a href="Hikes/IMG_4600_Large.png"><img style="width:1280px" src="../images/IMG_4600_Large.png"/></a><figcaption>This is the view from the top of the trail. Summer time here is crazy you get these beautiful blue skies contrasted against the bluff in basically any direction you look.</figcaption></figure><h3 id="5f5a976c-aab4-4267-8f85-d28700f6e041" class="">Favorite Picture</h3><figure id="68f600fa-9be1-4ba4-9310-7c0f61685c3e" class="image"><a href="Hikes/IMG_4601_Large.png"><img style="width:1280px" src="../images/IMG_4601_Large.png"/></a><figcaption>The desert is a lesson in resiliency. This was a dry, exposed rock field, but somehow plants still grew. And there was moss all over the rocks. Somehow things find the will to survive.</figcaption></figure><h3 id="6a96b8e0-28d7-4ebf-be7c-798d61043509" class="">Favorite Rock</h3><figure id="5df71327-c9d7-4f55-b0c3-3844a66c3f2c" class="image"><a href="Hikes/IMG_4599_Large.png"><img style="width:1280px" src="../images/IMG_4599_Large.png"/></a><figcaption>I loved the visual of this small dish-shaped rock inside of a larger dish-shaped rock.</figcaption></figure></div></details><hr id="263055f5-84c5-42e1-a3e2-228c1604358a"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">8.16.2023: Meditation Trail</summary><div class="indented"><p id="a67d779a-2a3b-4b20-b480-f4398d1d6c97" class="">This was another trail that I was able to walk to starting from my house. We are surrounded by nature on all sides which is incredible. I’ve done a few other hikes on this trail system before but hadn’t made it to this end. I picked a great day as well, it was over 100 degrees by the time I got home. Luckily, I packed a ton of water. This trail and a few of its sister trails are interesting. They are privately owned and the owners have done some interesting stuff with them. This one had a bench on a rock outcropping with a plaque dedicated to the previous owner of the land. And in another spot there was a memorial to those who had passed away. I saw a ton of lizards and chipmunks. I was hoping for some snakes but didn’t see any, they were probably hiding from the heat. It was probably too hot of a day for a hike like this but the views were well worth it.</p><h3 id="f6f2b2b8-c4b2-49d7-8470-3169d5e4839f" class="">Favorite View</h3><figure id="a1e55d45-af4b-4bfc-b4d0-c0abdd4196a6" class="image"><a href="Hikes/IMG_4581_Large.png"><img style="width:1280px" src="../images/IMG_4581_Large.png"/></a><figcaption>This was the view from the top in basically every direction. Brilliant sky and clouds framing the desert and mountains.</figcaption></figure><h3 id="d254ae8a-1dc3-4b94-a987-90a1d2715a6e" class="">Favorite Rock</h3><figure id="3f859906-7208-4157-8e2f-b43e25e106fb" class="image"><a href="Hikes/IMG_4582_Large.png"><img style="width:960px" src="../images/IMG_4582_Large.png"/></a><figcaption>Painted rocks are a big thing here, you can find them on most trails. In this case, the rock pile is a memorial to those who have passed away. The plaque encouraged people to bring a rock to remember a loved one.</figcaption></figure></div></details><hr id="3e70bda3-c26e-4e6d-8ee0-e80548a83f9a"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">7.15.2023: Kolob Canyon - Taylor Creek</summary><div class="indented"><p id="e7d0e5f4-803b-4fc5-89c2-53f693822834" class="">We are in the middle of a heat wave down here, 114 today. I love the heat so it doesn’t bother me, but the family aren’t fans, so we had to escape to the mountains. We went to Kolob Canyon which is a lesser known part of Zion National Park. It’s different than what you picture as Zion but it is just as beautiful in it’s own way. </p><h3 id="16dcc7ef-e543-4685-ba6c-417a4816a9ca" class="">Favorite View</h3><figure id="8cb75eff-e7ad-4b1b-9b85-0981cd976902" class="image"><a href="Hikes/IMG_4423_Large.jpeg"><img style="width:960px" src="../images/IMG_4423_Large.jpeg"/></a><figcaption>I love the contrast of the lush greens with the looming peaks of Zion in the background.</figcaption></figure><h3 id="480ddd16-1998-4eb8-af9b-e5591d16a128" class="">Favorite Picture</h3><figure id="145213f3-5ead-4160-a050-00933d3d0c8a" class="image"><a href="Hikes/IMG_0574_Large.jpeg"><img style="width:1280px" src="../images/IMG_0574_Large.jpeg"/></a><figcaption>This is when we got back to the car, brother was wiped out even though I was the one doing the walking.</figcaption></figure><h3 id="17988cda-46fe-4ac0-9e54-d96264f17c08" class="">Favorite Rock</h3><figure id="3a48313d-b6e1-4389-b04d-3aab9a8a439f" class="image"><a href="Hikes/IMG_4424_Large.jpeg"><img style="width:960px" src="../images/IMG_4424_Large.jpeg"/></a><figcaption>I love this part of the state because you get the classic red rock of southern Utah with the green of the mountains.</figcaption></figure></div></details><hr id="5a2ef04f-f364-44b5-8263-817dcc071e70"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">5.7.2023: Snow Canyon - Petrified Dunes</summary><div class="indented"><p id="b7f0fe08-977b-4395-a959-46597ed4f8fd" class="">I think we will be spending a lot of time at Snow Canyon this summer, crazy that this is in our backyard. We took the kids out here today to go on a hike that ends in a tortoise statue. Turns out it wasn’t much of a hike, just a 10 minute walk down a gravel path. Since we were all geared up we decided to find somewhere else to explore and started hiking around these petrified dunes. And then we started climbing them. We got to the top to find some of the best views that I have seen in a long time. There is tons to explore on this trail that we didn’t get to see. And so much more, so we will be back.</p><h3 id="48b9265c-d2af-43e0-8a8a-572a73fd0f40" class="">Favorite View</h3><figure id="0de06cdd-2822-497a-a574-a7b1abee59d7" class="image"><a href="Hikes/IMG_3750.jpeg"><img style="width:1280px" src="../images/IMG_3750.jpeg"/></a><figcaption>This was from the top of the dunes. You can follow them all the way down into the valley below.</figcaption></figure><h3 id="e10abff5-1451-4bd0-ad45-0ba5e4c41195" class="">Favorite Picture</h3><figure id="ec617ca3-d71e-4246-bf3c-acd2eb5b7b2f" class="image"><a href="Hikes/A55088A2-8A20-417C-B69B-A71DFF12D437.jpeg"><img style="width:960px" src="../images/A55088A2-8A20-417C-B69B-A71DFF12D437.jpeg"/></a><figcaption>For awhile the kids were not into hiking. But they have been super into it lately. P was our trail master and showed us where to go on the map.</figcaption></figure><h3 id="e3eefb6e-9ea2-49bb-8757-4c9fe1755928" class="">Favorite Rock</h3><figure id="c4a9c503-7051-436c-9ea7-fa1b949b9506" class="image"><a href="Hikes/IMG_3749.jpeg"><img style="width:960px" src="../images/IMG_3749.jpeg"/></a><figcaption>The dunes were littered with these little rocks. I liked the wear in this one. My daughter said it looked like an eye.</figcaption></figure><h3 id="fa03f00b-9cc9-40fa-aff8-f1b139614e0b" class="">Bonus</h3><figure id="8deb2e1a-7647-4c2b-a05c-e5e966efde36" class="image"><a href="Hikes/46D8FF66-1676-4889-8838-A2C5932845CF.jpeg"><img style="width:960px" src="../images/46D8FF66-1676-4889-8838-A2C5932845CF.jpeg"/></a><figcaption>Had to give a huge shoutout to my niece. She started up the dunes first and we had to run to keep up with her.</figcaption></figure></div></details><hr id="764fadd9-c5f1-4c5d-98f4-8eab82ffee45"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">4.14.2023: Mustang Pass and Ice Box</summary><div class="indented"><p id="9190b078-255d-49a3-be69-5d996fb673b8" class="">Two for one special today. I had planned to hike Mustang Pass today, specifically because it would get me close to the red cliff and snowy mountains, of which I have been trying to get some good pictures. But as I was on the Mustang trail I saw the start of the trail for Ice Box and it went up on top of some other really cool cliffs. So my solution was to take Mustang Trail and then on the way back make a detour to Ice Box. Both had incredible views. And I’d like to come back and explore each area more in depth, instead of trying to power through both.</p><h3 id="09ee1bef-fc3b-4258-9b1f-6341382c1060" class="">Favorite View</h3><figure id="5b3b8d3d-fe21-4d15-b983-6679942106f1" class="image"><a href="Hikes/IMG_3631_Large.jpeg"><img style="width:1280px" src="../images/IMG_3631_Large.jpeg"/></a><figcaption>I’ve been trying to capture the contrast of the sandstone and snow for months, turns out I just needed to get closer to them.</figcaption></figure><h3 id="5be918fc-520e-404a-9627-c55d80ae168e" class="">Favorite Picture</h3><figure id="0ee782b5-9744-46b8-af73-2bb5a1076c1f" class="image"><a href="Hikes/IMG_3617_Large.jpeg"><img style="width:1280px" src="../images/IMG_3617_Large.jpeg"/></a><figcaption>I love taking Luna to remote places like this because she can run around and pretend to be a wolf.</figcaption></figure><h3 id="5d54df75-8e19-4f47-bd0f-796cbc213ee2" class="">Favorite Rock</h3><figure id="07e9cd12-cd18-4ff8-ae8b-5a74a19ac11c" class="image"><a href="Hikes/IMG_3607_Medium.jpeg"><img style="width:640px" src="../images/IMG_3607_Medium.jpeg"/></a><figcaption>Cheated here, found an entire pile of rocks instead of just one. But whoever made this pile in the middle of nowhere deserves some recognition.</figcaption></figure></div></details><hr id="2b98a10e-b8e3-4020-99fb-87f4a1e2ebc4"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">3.9.2023: Half Dome (Again)</summary><div class="indented"><p id="b92c5679-742e-4b9f-ad6e-9982b4c13926" class="">I’ve tried to get up here several times since we moved here 8 months ago. It is so appealing because it is right in my backyard. But for being so closed to home it is a severe climb. But it was a beautiful, clear day so I took a lunch break and rucked to the top. Couldn’t ask for better views than this, especially in my backyard. Besides the view, the highlight was a pair of hawks. They were perched on top when I started and I tried to grab some pictures. But as I got closer they took to the sky and circled me for awhile. After they decided to not hunt me, they flew off and left me to explore the plateau alone.</p><h3 id="7275f334-d649-451c-8eff-14a4b2ac12aa" class="">Favorite View</h3><figure id="548567dd-24bb-41ee-b1dc-6c6b2a35e647" class="image"><a href="Hikes/IMG_3448_Large.jpeg"><img style="width:1280px" src="../images/IMG_3448_Large.jpeg"/></a><figcaption>I’ve been trying to get a good shot of this for awhile (tried last hike too), I love the contrast of the red rock hills against the snow capped mountains.</figcaption></figure><h3 id="6d97862c-75c3-486c-9b03-b36de8896c98" class="">Favorite Picture</h3><figure id="2448b19b-bb84-4de2-a307-2a63e840f35c" class="image"><a href="Hikes/IMG_3457_Large.jpeg"><img style="width:1280px" src="../images/IMG_3457_Large.jpeg"/></a><figcaption>I hate taking pictures of myself, but I was so happy to finally scale up this thing that I had to include one.</figcaption></figure><h3 id="325cbb34-24a1-4970-949e-226cb274ce15" class="">Favorite Rock</h3><figure id="0e0e5d58-e302-4050-b8a0-c2c8262defcf" class="image"><a href="Hikes/IMG_3458_Large.jpeg"><img style="width:960px" src="../images/IMG_3458_Large.jpeg"/></a><figcaption>The rocks on top of the plateau all had cool wear patterns from wind and rain.</figcaption></figure></div></details><hr id="3c7758e1-fbc4-4d1e-ada4-271d60fbdd4d"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">1.29.2023: Claim Jumper</summary><div class="indented"><p id="e1dea352-4b45-420f-927d-71e51ba7c744" class="">The paradox of the desert seems to be that the deeper it gets into winter the nicer the hiking gets. I have seen a few signs around the area for this hike. “Claim Jumper” and “Secret Sauce” start from the same trail head. But before I knew they were hikes I had no idea where those signs were trying to take me. This is a fairly easy hike, it takes about 2 miles to slowly climb on top of the mesas. Once you are up there you have great views of the Desert Canyon area. You can also see the Dixie National Forest in the distance. The edge of the area runs right along the airport so you can also see small aircraft taking off and landing.</p><h3 id="01c8dc42-2149-4107-a883-e29605bc8bcf" class="">Favorite View</h3><figure id="5ce0b1f7-9679-4578-9a96-56e22d9d17e0" class="image"><a href="Hikes/F9A06B79-FD1D-4B8E-905A-CFCEAD8F0D99.jpeg"><img style="width:4032px" src="../images/F9A06B79-FD1D-4B8E-905A-CFCEAD8F0D99.jpeg"/></a><figcaption>A bit hard to see from my phone camera but I love the contrast of the snow covered mountains against the red rock cliffs.</figcaption></figure><h3 id="596356df-18c6-42c2-ad62-ff5afeb97809" class="">Favorite Picture</h3><figure id="0d7d5cec-b0c1-4d2e-a51f-648d0f38f541" class="image"><a href="Hikes/6231E4FC-D4C7-414B-877A-49CC4C3472A6.jpeg"><img style="width:1280px" src="../images/6231E4FC-D4C7-414B-877A-49CC4C3472A6.jpeg"/></a><figcaption>The sky was beautiful today. The clouds against the blue sky and the desert is hard to beat.</figcaption></figure><h3 id="0014e516-1623-4333-a6c0-6729819fe6cd" class="">Favorite Rock</h3><figure id="0d854541-6ebf-4bcb-82f0-c9dd189f4554" class="image"><a href="Hikes/1567EBE3-EA04-46B5-92C5-9DE42416F6A8.jpeg"><img style="width:960px" src="../images/1567EBE3-EA04-46B5-92C5-9DE42416F6A8.jpeg"/></a><figcaption>When we hike our daughter collects rocks that look like “gems”. These were my favorites from what we found.</figcaption></figure></div></details><hr id="3b0e7084-fc59-40a1-b55b-2f9d0b1fbb6e"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">1.14.2023: Aspiration Trail</summary><div class="indented"><p id="df7dc7bf-f24a-4915-a5bc-385c80b8846d" class="">This was our first family hike of the year. Again so luckily to live in this place where we can be out hiking in the middle of winter. We picked this trail because it was new for us. And it is one of the more unique hikes here. It’s definitely a family friendly hike, maybe a mile long to the top without much elevation gain. The real attraction here is all along the trail there are painted rocks. Hikers bring them with sayings, designs, and pictures and leave them all along the paths. I say paths because there are several routes to the top. At the top are even more painted rocks and some great views.</p><h3 id="6e64536d-24d4-4688-b081-ddfc511e206f" class="">Favorite View</h3><figure id="4879c7b7-7683-4c86-a70b-f2919bab44ec" class="image"><a href="Hikes/15151AE4-4408-41BF-93C2-3D7825F57E84.jpeg"><img style="width:1280px" src="../images/15151AE4-4408-41BF-93C2-3D7825F57E84.jpeg"/></a><figcaption>This is the view from the peak. You can see the piles of painted rocks at the bottom. This area is interesting because it is developed on all sides but when you get out there it feels like the middle of nowhere.</figcaption></figure><h3 id="75a13a3b-8531-4ca0-afa6-97b611b7f242" class="">Favorite Picture</h3><figure id="8d385f9a-75a3-4bdf-b727-5d9d536d8748" class="image"><a href="Hikes/C5007CA6-7613-40D6-8E65-94953DA1B0EB.jpeg"><img style="width:960px" src="../images/C5007CA6-7613-40D6-8E65-94953DA1B0EB.jpeg"/></a><figcaption>There is nothing I love more than my family and spending time with them in nature is hard to beat.</figcaption></figure><h3 id="32c03079-ec1b-4d36-9907-b5020c782252" class="">Favorite Rock</h3><figure id="1961fd7d-5e5b-4831-918d-15ccffacdbc3" class="image"><a href="Hikes/C55D6F67-5AB8-4F52-8509-9333F32913CF.jpeg"><img style="width:4032px" src="../images/C55D6F67-5AB8-4F52-8509-9333F32913CF.jpeg"/></a><figcaption>I didn’t even check to verify the authenticity of this quote, it’s just too good to not be true.</figcaption></figure></div></details><hr id="deac7a4a-a8db-49fd-b667-4880f6600cf7"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">1.5.2023: Half Dome</summary><div class="indented"><p id="8fab348c-5ad7-47ef-81e6-e37cc7e682c4" class="">This is another one that is a gimme. I could start out from my house to get here. Also a huge benefit of where we live that I could hike this in January with nothing more than a hoodie. Depending where you are at on this thing you could be in Utah or Arizona. Hard to tell because it straddles the border and the BLM fence that lines the border disappears up here. Most of the time you are climbing on sandstone/limestone, so things breaking away are frequent. And the winter time means that everything is covered in moss. It was rainy and really windy today, which made things a bit sketchy. I got within maybe 12 feet of the top and turned back because I was worried about being blown off a cliff on the last scramble.</p><h3 id="07da444b-1792-45d9-acd6-0c45a09358f9" class="">Favorite View</h3><figure id="15174ea8-1fe2-4efc-9cf3-2d5a9598d210" class="image"><a href="Hikes/ECD3FD70-5CA0-4774-B161-341951F77898.jpeg"><img style="width:4032px" src="../images/ECD3FD70-5CA0-4774-B161-341951F77898.jpeg"/></a><figcaption>It is hard to beat getting on top of a high cliff and being able to stare out into the Arizona desert. Tons to explore out there too.</figcaption></figure><h3 id="7d07088a-a8a3-4435-a34c-3a1d5afbee1d" class="">Favorite Picture</h3><figure id="07fd9471-9351-453c-98fd-4bf2833c3b2f" class="image"><a href="Hikes/601CBE8A-8A43-496A-93CE-995AEA98BD7B.jpeg"><img style="width:960px" src="../images/601CBE8A-8A43-496A-93CE-995AEA98BD7B.jpeg"/></a><figcaption>This is me a few feet from the peak, trying not to look freaked out. It’s not often that I get scared on a mountain but the winds had me feeling real jittery. I’m glad I turned back and didn’t risk it.</figcaption></figure><h3 id="f356bc4a-65f0-42fa-aadd-b312ac3d4270" class="">Favorite Rock</h3><figure id="9d403515-b425-4892-a7cd-9eba69965fa2" class="image"><a href="Hikes/89326BD8-BAEF-4498-A805-4C09AF822569.jpeg"><img style="width:960px" src="../images/89326BD8-BAEF-4498-A805-4C09AF822569.jpeg"/></a><figcaption>This thing caught my eye because of the striped pattern. But I also wondered how a nice river rock ended up amongst all the broken sandstone and limestone.</figcaption></figure></div></details><hr id="ec687af2-6f3b-447b-9f8a-67b9eeded93b"/><details><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">12.18.2022: Desert Canyon</summary><div class="indented"><p id="0ffd151b-f06e-4993-bd4a-001bcade4e4a" class="">This one is a bit of a freebie, since I was able to walk out my front door and onto the trail within 2 minutes. We live at the base of a mesa that straddles the border of Utah and Arizona. You can get on top of it and just walk through the desert for 100’s of miles before you met any people. It’s a fun place to poke around and explore because there are so many paths and formations to check out.</p><h3 id="698879b2-f701-4d25-81d6-9e1144aad858" class="">Favorite View</h3><figure id="3adb1e12-0671-4383-87aa-088c75a2b4ec" class="image"><a href="Hikes/IMG_2917.jpeg"><img style="width:4032px" src="../images/IMG_2917.jpeg"/></a><figcaption>Coming over a hill and looking out at plateaus out in Arizona</figcaption></figure><h3 id="35b919bc-921e-4ac9-8483-bf1c266db22b" class="">Favorite Picture</h3><figure id="5fba74d2-eef1-4eb0-900e-2dc5d68c702a" class="image"><a href="Hikes/IMG_2913.jpeg"><img style="width:672px" src="../images/IMG_2913.jpeg"/></a><figcaption>Luna was so happy to be out exploring. She especially liked it because it was 20 degrees outside.</figcaption></figure><h3 id="1e2d7bfb-935b-44dd-868e-1a839a5b5bf3" class="">Favorite Rock</h3><figure id="ac002ea2-7f2a-45be-977f-8345f60301c2" class="image"><a href="Hikes/IMG_2888.jpeg"><img style="width:3024px" src="../images/IMG_2888.jpeg"/></a><figcaption>This was cool because it had a red rock core inside a yellow shell. And the backside is black and grey.</figcaption></figure></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
