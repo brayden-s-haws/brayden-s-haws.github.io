@@ -1,0 +1,811 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Structured Outputs Research</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre;
+	overflow-x: auto;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/>
+</head><body><article id="10426fec-e2cc-808d-b1df-eacc9437d000" class="page sans"><header><h1 class="page-title">Structured Outputs Research</h1><p class="page-description"></p></header><div class="page-body"><p id="10426fec-e2cc-80c5-b348-ef40e019561a" class="">Working with LLMs can feel like magic. With a well-crafted prompt, you can get it to do almost anything or create nearly anything for you. Despite this flexibility, they are also limited. In essence, they take in a string and output a string. You can do many things to get that output string to look like something else. You can tell it to make a list, dictionary, or JSON object. But that is a bit of a hack. In the end, it is still a string and the ability to enforce the object formats is limited. This means you can tell the LLM to always output in a dictionary format, but there is no guarantee that it will.</p><p id="c75d06ab-693c-4f7e-9664-a8f929a9786d" class="">Here&#x27;s a practical example of this from something I built. I would feed the LLM a string of comma-separated URLs. It was supposed to evaluate the URLs and then return me a comma-separated list of URLs. This sometimes worked well. But occasionally the LLM would throw in a &#x27;\n&#x27; after each comma. This was undesirable because it would break the downstream data processing. To counteract this I added instructions to the prompt to never include a &#x27;\n&#x27;. Despite the prompt changes, it would still include these sporadically. I added logic after the output was returned to strip these out in cases where the output included a &#x27;\n&#x27;.</p><pre id="377b7f5e-d78e-4c9c-a587-79434df9b28d" class="code code-wrap"><code class="language-python">def remove_duplicates(article_set):
+        &quot;&quot;&quot; Many sources may cover the same story in a given day. When this happens we only want to include the story one time using one source. The URLs for all scraped articles are sent to GPT
+        and using the keywords in the URL it determines which URLs represent unique stories. In cases where there are multiple sources for a story it selects what it believes to be just the most
+        reputable source and returns that URL.
+        :param str article_set: All the URLs for the scraped articles are combined into a string so they can be sent to GPT for evaluation
+        :return: list
+        &quot;&quot;&quot;
+        for attempt in range(5):
+            try:
+                # In this case I used gpt-3.5-turbo-16k because I needed to send all URLs at once so the needed token count was much higher. But this model is twice as expensive so where possible I
+                # used gpt-3.5-turbo
+                response = openai.ChatCompletion.create(
+                    model=&quot;gpt-3.5-turbo-16k&quot;,
+                    messages=[
+                        {&quot;role&quot;: &quot;system&quot;,
+                         &quot;content&quot;: &quot;You will receive a set of URLs. Analyze the keywords within each URL to identify potential overlapping content. If multiple URLs seem to discuss the same topic based on shared keywords (for instance, if 3 URLs contain the terms &#x27;microsoft&#x27; and &#x27;teams&#x27;), choose only one URL, giving preference to the most reputable source based on general knowledge about the source&#x27;s reputation. After your analysis, provide a comma-separated list of unique URLs that correspond to distinct topics. Your response should only be the list of URLs, without any additional text, line breaks, or &#x27;\n&#x27; characters.&quot;},
+                        {&quot;role&quot;: &quot;user&quot;,
+                         &quot;content&quot;: article_set}
+                    ],
+                    max_tokens=10000,
+                    temperature=.2,
+                )
+                deduped_urls = response[&quot;choices&quot;][0][&quot;message&quot;][&quot;content&quot;].replace(&#x27;\n&#x27;, &#x27;&#x27;).strip()  # GPT only returns things in string format. So though the prompt asks for a comma-separated list, the list actually comes back as a string that you need to parse. On occasion GPT was appending a \n to each URL which caused the subsequent parsing and matching to
+                # break. In the case that happens, this strips out the \n
+
+                return deduped_urls</code></pre><p id="09f391f5-9737-4bb3-8e5b-8b698e91ec5f" class="">This was a simple structuring request to the LLM and it had trouble following it. Imagine if I had more complex structure needs. Well, I am not the only one who had issues like this. The need for more complex structures is widespread when working with LLMs. Many people have been working to fix the flaws in these outputs. Large providers like OpenAI and Anthropic introduced &quot;JSON Modes&quot; to their models. These allow you to define a structure and then tell the model to return its output in that format. But they were also complex to set up. These modes worked better but they were not always reliable. After doing the work to define the format and prompt the LLM, there would be occasions when it would not follow instructions. And unlike my example above it was hard to guard against the inconsistencies because they could vary so much. The model could: ignore the format completely, create keys that weren&#x27;t in the format, or add whitespace infinitely.</p><pre id="10426fec-e2cc-8028-8e66-ec4459159dda" class="code code-wrap"><code class="language-python"># Define the structure for car information
+car_info_schema = {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;make&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The manufacturer of the car&quot;},
+        &quot;model&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The specific model of the car&quot;},
+        &quot;year&quot;: {&quot;type&quot;: &quot;integer&quot;, &quot;description&quot;: &quot;The year the car was manufactured&quot;},
+        &quot;features&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;description&quot;: &quot;A list of notable features&quot;},
+        &quot;description&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;A brief description of the car&quot;}
+    },
+    &quot;required&quot;: [&quot;make&quot;, &quot;model&quot;, &quot;year&quot;, &quot;features&quot;, &quot;description&quot;]
+}
+
+# Function to extract car information from user input
+def extract_car_info(user_input: str) -&gt; dict:
+    response = openai.ChatCompletion.create(
+        model=&quot;gpt-3.5-turbo-0613&quot;,  # Use the correct model that supports function calling
+        messages=[
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant that extracts car information from user input.&quot;},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Extract car information from the following text: {user_input}&quot;}
+        ],
+        functions=[{
+            &quot;name&quot;: &quot;extract_car_info&quot;,
+            &quot;description&quot;: &quot;Extracts structured car information from text&quot;,
+            &quot;parameters&quot;: car_info_schema
+        }],
+        function_call={&quot;name&quot;: &quot;extract_car_info&quot;}
+    )
+    
+    # Parse the function call arguments (which are returned as a string)
+    function_args = json.loads(response.choices[0].function_call.arguments)
+    
+    return function_args</code></pre><p id="254b1f45-2c5e-4b7c-adfc-30619225ebe5" class="">There are other methods to enforce formatting. The most prominent of these is <a href="https://python.useinstructor.com">Instructor</a>. It is similar in that you define a format for the model to follow. But, it has more controls and guardrails built-in. These ensure that the outputs follow the format at all times. You can see here that the configuration is similar to the JSON modes but it is a bit simpler.</p><pre id="10426fec-e2cc-8020-9ce1-ec896ea813a7" class="code code-wrap"><code class="language-python">import instructor
+from pydantic import BaseModel
+from openai import OpenAI
+
+
+# Define your desired output structure
+class UserInfo(BaseModel):
+    name: str
+    age: int
+
+
+# Patch the OpenAI client
+client = instructor.from_openai(OpenAI())
+
+# Extract structured data from natural language
+user_info = client.chat.completions.create(
+    model=&quot;gpt-3.5-turbo&quot;,
+    response_model=UserInfo,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;John Doe is 30 years old.&quot;}],
+)
+
+print(user_info.name)
+#&gt; John Doe
+print(user_info.age)
+#&gt; 30</code></pre><p id="10426fec-e2cc-80e9-928d-f90e1253581a" class="">Most recently, OpenAI took a page from Instructor&#x27;s playbook and introduced a <a href="https://platform.openai.com/docs/guides/structured-outputs">Structured Outputs</a> capability. The configuration for this is identical to Instructor&#x27;s setup and the consistency of outputs is as good. The only real drawback seems to be that it is a bit slower than using Instructor.</p><pre id="10426fec-e2cc-8044-b823-fc2aa33d0d2a" class="code code-wrap"><code class="language-python">from pydantic import BaseModel
+from openai import OpenAI
+
+client = OpenAI()
+
+class CalendarEvent(BaseModel):
+    name: str
+    date: str
+    participants: list[str]
+
+completion = client.beta.chat.completions.parse(
+    model=&quot;gpt-4o-2024-08-06&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Extract the event information.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Alice and Bob are going to a science fair on Friday.&quot;},
+    ],
+    response_format=CalendarEvent,
+)
+
+event = completion.choices[0].message.parsed</code></pre><p id="10426fec-e2cc-80d8-b893-edacf3303a11" class="">Between Instructor and OpenAI Structured Outputs, getting consistent outputs seems to be a solved problem. You can use the LLM of your choice based on quality, cost, speed, etc., and get the needed format. This gives users lots of power and flexibility to build in the way that makes the most sense to them.</p><p id="10426fec-e2cc-80e7-84c1-feff5ed46f2e" class="">To test this I created a book summarizer tool. The user inputs a summary of a book and the model extracts the required details from the summary. It then returns the details in the specified format. Since the Instructor and OpenAI formats are identical, I was able to build this for four different LLMs in under an hour. Now you can input one summary and get the outputs side-by-side. Then you can assess the quality of outputs based on the model used. This is a simple example that can be expanded to fit more complex and challenging use cases.</p><p id="10426fec-e2cc-8009-b63a-cc1a0b2b859b" class="">This video demo walks through some of the background and setup. It also shows examples of the different outputs side-by-side. They all return the information in the same format, but the quality of what they return varies. It also gives you some ideas for combining the power of structured outputs with the knowledge embedded in the models themselves.</p><figure id="10426fec-e2cc-8025-8b5e-d53a62a18322"><video controls style="width: 100%; max-width: 100%;"><source src="../videos/struc_outputs.mp4" type="video/mp4"/>Your browser does not support the video tag.</video></figure><p id="10426fec-e2cc-80a4-bd48-d35fd36c2cb0" class="">You can give this a try for yourself by grabbing the repo here: <a href="https://github.com/brayden-s-haws/structured_outputs_testing/tree/main">https://github.com/brayden-s-haws/structured_outputs_testing/tree/main</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw==" crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+</body></html>
