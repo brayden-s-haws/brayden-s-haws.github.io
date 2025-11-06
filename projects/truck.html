@@ -1,0 +1,719 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Truck Project</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="421d28a7-8014-43d5-a0d4-cecca9163748" class="page sans"><header><img class="page-cover-image" src="../images/B7121C4F-5B9A-4565-9C40-F5EA8E0D01C3.jpeg" style="object-position:center 50%"/><h1 class="page-title">Truck Project</h1><p class="page-description"></p></header><div class="page-body"><p id="def86801-c071-4966-b184-b2f7522a1700" class="">One of the things I challenged myself to do this year was to build things in the real world. In other words get some hobbies that didn’t involve sitting at a computer. The most ambitious and one I have enjoyed the most has been buying a truck and fixing it up.</p><p id="b1593c1a-f871-4c11-9776-55e667426adf" class="">Despite having a drivers license since I was 16 and having owned a few cars, I knew almost nothing about how they worked. So I was really starting at square one with this project. I had to find a truck, figure out what work it needed and then figure out how to do all of it. My brother (who knows what he’s doing) and YouTube have been my best friends in getting this thing from where I bought it to where it is now.</p><hr id="1143e497-688c-4e26-a70b-56b44ae7d9b2"/><h2 id="762ebeea-7c29-45ec-b0b5-771ddf246634" class="">Finding a Truck</h2><p id="a7369cac-1282-45d0-b5a3-ed125226fce1" class="">Growing up my grandpa had a red, early-90s Silverado that I was absolutely in love with. As a teenager (and as an adult) I would borrow it and joy ride around. Driving that thing made me feel like I was living in one of these classic commercials:</p><figure id="1ce5eabe-405c-4eb6-898e-c1058d0e51bd" style="margin: 1.25em 0;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/tWes-jlHcWA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</figure><p id="f9eac43e-deef-4c6a-b456-50857c583cee" class="">His truck would have been my dream project but that wasn’t an option. By some luck I was able to find a similar truck, but in better shape. The truck I found was a 1994 Silverado 2500. It had a long bed and an extended cab, so it was a behemoth. It had just over 100,000 miles on it. And as a bonus it had custom racing tires and a retro paint job. I took it for a test drive and knew I had to take it home. I bought it on the spot and brought it home to get to work.</p><figure id="9677e718-118f-412f-b631-5817001e81b8" class="image"><a href="Truck%20Project/3A3FADCF-90FA-4286-88F5-734CDD88D7EE.jpeg"><img style="width:576px" src="../images/3A3FADCF-90FA-4286-88F5-734CDD88D7EE.jpeg"/></a></figure><p id="2a89b7b0-8352-42d8-91c8-8f52b4068610" class="">This thing was in way better shape than I expected to find an old, used truck in. But there was still plenty of stuff that I wanted to do with it.</p><hr id="f78f3060-1ea8-4456-b5dc-a19c2e251b91"/><h2 id="931c107e-6d4e-488b-8c18-90c9dccd689a" class="">Get Out Of Your Shell</h2><p id="9a4fe163-60e3-485e-9ba5-d8f5a8bf485f" class="">Turns out this truck also had a custom made shell (the previous owner loved it as much as I did, based on how much he spent on custom parts). I didn’t have much need for a shell. After a few days I took it off and found it a new home with an owner who would get good use out of it. No shell made it much easier for me to load stuff in and out, and made it easier for my dog to hop in the bed of the truck.</p><figure id="fefc6fbe-45d0-4a1c-a59b-c29f5a73ff95" class="image"><a href="Truck%20Project/2558D4F9-BBCF-4BE0-A1E0-17292FEAEA6D.jpeg"><img style="width:528px" src="../images/2558D4F9-BBCF-4BE0-A1E0-17292FEAEA6D.jpeg"/></a></figure><p id="e019c787-ada3-466b-babd-e12814d72fe3" class="">When I took the shell off I did find a few issues. The paint was a bit marred and there was old dry adhesive where the shell had been. The back window was starting to detach, which I hadn’t noticed because the shell had been holding it in place. And lastly the cab brake light was missing.</p><figure id="9df69c48-8983-497b-a775-049184352594" class="image"><a href="Truck%20Project/8C4E56F7-83C8-42DD-9C2B-95DC50CA5634.jpeg"><img style="width:480px" src="../images/8C4E56F7-83C8-42DD-9C2B-95DC50CA5634.jpeg"/></a></figure><p id="67e0576b-46d7-4519-a5f7-de9ebb0ea920" class="">I cleaned up the paint myself and got it looking almost new. I also installed a new brake light. I did leave the window fix to the pros, my car-expert brother said that was not something anyone should try to do at home. Once all that was done the thing looked almost new from both the outside and inside.</p><hr id="301cbb62-2e58-436e-b515-8a5e0ab647e4"/><h2 id="5447c8b1-5ba3-4dae-82c4-04ae54a7ba10" class="">Get Ready To Work</h2><p id="b810254d-a0cc-4254-b3ce-7cb4096b9794" class="">I wanted to put a rack on both the front and back of the truck. And I also wanted a tool box in the bed of the truck. This is where things got scary. It wasn’t as easy as just snapping these on. I had to drill a bunch of holes in the truck. Few things test your resolve and faith in yourself, as spending a bunch of money on something and then trusting yourself not to destroy it with power tools. But once I had the right drill bits and supplies it turned out to be surprisingly easy. (I definitely recommend goggles and long sleeves for something like this, unless you enjoy hot shards of metals burning your skin and eyes.)</p><figure id="e167a5a6-32a7-4a5a-a1c0-cc935e7981e7" class="image"><a href="Truck%20Project/4C1CF921-DA03-4893-8D60-A7198F844F1A.jpeg"><img style="width:528px" src="../images/4C1CF921-DA03-4893-8D60-A7198F844F1A.jpeg"/></a></figure><figure id="c2e36a52-ff88-46c8-bf2b-6e2dcbd41d9b" class="image"><a href="Truck%20Project/1D5117DF-F37E-4C5C-9CAD-1710A0E2BD8C.jpeg"><img style="width:528px" src="../images/1D5117DF-F37E-4C5C-9CAD-1710A0E2BD8C.jpeg"/></a><figcaption>              (Notice the new brake light behind the rack)</figcaption></figure><p id="3d4bbebe-7e01-42a5-9eb2-b505fecd699b" class="">With that stuff installed the truck was armored up and ready to take on any job imageable.</p><hr id="9a6247c0-3a43-4627-b4a1-89fb6b8ad65d"/><h2 id="439a9a5b-af55-48c6-be79-d053873d84e8" class="">You Call That a Pickup Truck?</h2><figure id="d6de605c-b440-4f0b-b1e8-7b21d2aacd4b" style="margin: 1.25em 0;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/25gA27baVrQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</figure><p id="ef025e82-5e08-4fb9-ad73-c66a8862569b" class="">Once of my favorite songs is Pickup Truck by Kings of Leon. Unfortunately when I bought this truck I couldn’t listen to it while I was driving. The issue was my only options for music were a radio that could hardly pick up a signal (missing antenna) or a tape deck (I don’t think I’ve owned a tape in my life). Also the speakers had a lot of crackle, so even if I could listen to music it would probably sound terrible.</p><figure id="1d40dfda-6a23-4778-b4e5-e48304af7711" class="image"><a href="Truck%20Project/0CB20403-6FA8-459D-9F42-C90A1802041C.jpeg"><img style="width:528px" src="../images/0CB20403-6FA8-459D-9F42-C90A1802041C.jpeg"/></a></figure><p id="63dd1e46-c5d1-41f7-a0cc-d99cfe544601" class="">All this meant I needed to tear out the old stereo and replace it with something new. Replacing the stereo and speakers were a bit tougher than the previous work I had done. Especially because it wasn’t easy to find clear instructions on what to do.  It also appears that audio technology has progressed a ton in the last 30 years. Behind the dashboard there were 3 or 4 big metal boxes that made up the stereo and the new stereo I got was only 1 small piece. So I felt a big insane pulling out big pieces of metal and wiring and just throwing its away. But after spending some time soldering and heat shrinking old, feeble wires with brand new wires. I was able to get everything in a state where it looked like it would work. I hooked the battery back up, crossed my fingers and turned over the ignition. Shockingly the new stereo turned on and the sound coming from the new speakers was loud and clear.</p><div id="a906113d-8cf4-4fd2-92bf-d8e65231b407" class="column-list"><div id="02008ca0-6b24-4d1d-ba09-d07ddd67c219" style="width:62.5%" class="column"><figure id="adcba9bf-dcde-4fba-9de5-fb61044e0594" class="image"><a href="Truck%20Project/14636426-7672-4E56-A6FD-232EA41C71D3.jpeg"><img style="width:384px" src="../images/14636426-7672-4E56-A6FD-232EA41C71D3.jpeg"/></a></figure><p id="7b21748c-c31e-4d43-9288-cfd99fc6893b" class="">
+</p></div><div id="a68dd9c9-9beb-454a-8004-7c418fda9e3a" style="width:37.5%" class="column"><figure id="62adba14-198b-4483-bea4-b41495a53ac9" class="image"><a href="Truck%20Project/A16C4AE8-64C1-4C18-915C-10D28D82A249.jpeg"><img style="width:240px" src="../images/A16C4AE8-64C1-4C18-915C-10D28D82A249.jpeg"/></a></figure><p id="6be9f4c9-adf2-474b-8a24-4478b048164a" class="">
+</p></div></div><p id="1d226fe5-b369-4c56-9242-39af762889ce" class="">Now I can drive around a truck that is almost my age while using Apple Car Play on a touchscreen stereo, it’s the best of both worlds.</p><hr id="b3960a4e-f5d3-4bf6-ab03-7bc718723a6e"/><h2 id="7f64ac29-b92e-4851-bb98-c7b8681bd203" class="">Time to Race</h2><p id="1b47e6f7-386a-45d6-903c-d9b5692f799a" class="">One of the real pieces of charm about the truck when I bought it was the wheels and tires. The previous owner who was in his 80s had equipped it with racing wheels and tires. They seemed fun when I bought the truck. But then I tried to find a spare tire. It turned out that they hardly made that size of wheel and tire anymore. Even if it didn’t find an exact match, just to get the same size was going to cost me over $1000. So I bit the bullet and swapped out the wheels and tires for a more modern size. I wanted to keep the heritage of the previous owner so I stuck to a racing wheel manufacturer. But I swapped out the tires for all-terrains which made more sense living where I do. I also went for all black wheels since it matched the other stuff I had added to the truck and I like black over the traditional chrome.</p><div id="69ed73f4-1a14-4e00-8f95-cb9164b2a910" class="column-list"><div id="817ba03c-281c-4401-af2e-d4542b67c5ed" style="width:50%" class="column"><figure id="d0b300f9-94e7-4baf-b618-b8ed8a8ffd9e" class="image"><a href="Truck%20Project/BAAF5F25-C964-45F1-A80B-98AC9121E72A.jpeg"><img style="width:432px" src="../images/BAAF5F25-C964-45F1-A80B-98AC9121E72A.jpeg"/></a></figure><p id="f43b70ef-a6ae-4ede-86fc-135878da74b5" class="">
+</p></div><div id="5c1ec78a-83ff-4625-bc8e-efa3dc32cb72" style="width:50%" class="column"><figure id="025189b4-1340-4a44-b1f2-a9665a773299" class="image"><a href="Truck%20Project/B4A482AD-C44B-46E4-BC96-E8C2368B6479.jpeg"><img style="width:432px" src="../images/B4A482AD-C44B-46E4-BC96-E8C2368B6479.jpeg"/></a></figure><p id="df8f6318-c974-4c69-89a5-609a842d1ba3" class="">
+</p></div></div><hr id="0320ae84-447f-4f14-b447-0cf3705fdf83"/><h2 id="a68f089b-cb9c-48fe-979f-4801c739bd6b" class="">Small Fixes</h2><p id="6cb6db54-0197-45a1-a371-4a007f80f858" class="">There were a lot of other thing I did along the way that aren’t as noteworthy or exciting:</p><ul id="396c5dc8-66b7-4dab-9e03-8695f604c218" class="bulleted-list"><li style="list-style-type:disc">New high performance battery </li></ul><ul id="ab995679-09b5-43b1-9042-e3b886426e07" class="bulleted-list"><li style="list-style-type:disc">New radio antenna</li></ul><ul id="dea98143-0cfd-476b-8b9c-5d543fcb1a1a" class="bulleted-list"><li style="list-style-type:disc">Seat covers</li></ul><ul id="88642a92-c784-4e0c-a54a-41cf70884fb2" class="bulleted-list"><li style="list-style-type:disc">AC recharged</li></ul><ul id="fb3557bf-b777-41d5-9818-6c2682d1048d" class="bulleted-list"><li style="list-style-type:disc">Spare tire mount in truck bed</li></ul><ul id="03a2944c-c9a0-44cf-b5d8-ef8771b4ee56" class="bulleted-list"><li style="list-style-type:disc">Rings in the bed for tie downs</li></ul><ul id="f70ca8a1-7305-4b4a-a550-24125ede58e8" class="bulleted-list"><li style="list-style-type:disc">Headlight and taillight restoration</li></ul><p id="64882bcc-4f28-43a1-aa03-ad7eb363eef1" class="">After all that work this is how the truck looks today. </p><figure id="b86f4ff8-8643-4538-976f-b60b2ea47235" class="image"><a href="Truck%20Project/90F96B1A-2C29-41E0-915D-286C0070DC4B.jpeg"><img style="width:480px" src="../images/90F96B1A-2C29-41E0-915D-286C0070DC4B.jpeg"/></a></figure><figure id="273ae180-485b-44dc-8910-a5b7a4670dc7" class="image"><a href="Truck%20Project/380DF758-AE07-4262-B248-37A613A866E6.jpeg"><img style="width:480px" src="../images/380DF758-AE07-4262-B248-37A613A866E6.jpeg"/></a></figure><figure id="081d8e7e-49ad-4bdd-9f49-d634f3f9f19f" class="image"><a href="Truck%20Project/6FDEBB79-902E-4A22-9DE4-7E10109AC196.jpeg"><img style="width:480px" src="../images/6FDEBB79-902E-4A22-9DE4-7E10109AC196.jpeg"/></a></figure><p id="ff825de1-0eaa-435e-9a5e-afaa6af1df09" class="">It’s been a fun project so far and there’s lots more that I want to do to it. I hope to keep evolving it and improving it. And hopefully with the right care it’ll last for another 30 years.</p><hr id="f1c1e0ca-c78a-4307-a418-2414078a6310"/><h2 id="2b68d850-96eb-4855-9854-5e9c4ffe6832" class="">Blinded by the Light</h2><p id="316cdee2-caa3-4fc6-a84d-1b04b5a9d00d" class="">Months ago I bought some auxiliary lights for my truck. I had no clue how to install them. I tried for a few hours and got nowhere. This weekend I decided to try again. And with some focus and creativity it turned out to not be so bad. The thing that took the longest was getting the wiring right. I bought a premade harness but it didn&#x27;t match the layout of my truck at all. I hard to rip it all apart and rewire it to fit. Once that was done it was pretty smooth sailing. I got it all connected and put my dashboard and grill back together. Then I hooked the battery up and prayed. By some miracle it worked. Now I have a ton of light for when I go out camping or am out in the desert late at night.</p><figure id="382369f2-78be-474b-b43f-d387007211fb" class="image"><a href="Truck%20Project/IMG_4027.jpeg"><img style="width:710px" src="../images/IMG_4027.jpeg"/></a><figcaption>I think they are bright enough!</figcaption></figure><div id="191b0ce2-5131-4bc4-a434-d7f23f321e76" class="column-list"><div id="60bdc315-fdf4-4487-9baf-0180db95e622" style="width:50%" class="column"><figure id="12734098-49c9-4511-a359-ff7e21700739" class="image"><a href="Truck%20Project/IMG_4015.jpeg"><img style="width:1280px" src="../images/IMG_4015.jpeg"/></a></figure></div><div id="b9079c5b-1b38-47d9-9ff3-ec7e20968d91" style="width:50%" class="column"><figure id="4f5878cf-b80a-4508-adc5-97642f65ee74" class="image"><a href="Truck%20Project/IMG_4014.jpeg"><img style="width:1280px" src="../images/IMG_4014.jpeg"/></a></figure></div></div><hr id="e9677122-4c11-4663-b2f9-123f76b2cc3f"/><h2 id="dd119992-b483-4e88-80a1-e087a502bb10" class="">Wiped Out</h2><p id="1fcd056d-d003-4a7d-ab5c-89bd2f2a0f01" class="">The one thing I regret with the truck is that I didn’t take more “in progress” pictures. When I was installing the new stereo I couldn’t believe how much old electronics I ripped out of the dashboard. I wish I had pictures of the pile of metal boxes and wires. In that spirit, my wipers recently stopped working and I tried to document the repair process.</p><p id="3cd828fc-a0fc-47c1-b425-7bd8ce410b6c" class="">Ever since I bought the truck the wipers would intermittently not work, but I wasn’t sure why, and every time I thought to fix them they would work without issue. Turns out this is a common problem with my type of truck, there was even a recall for it, but I am about 25 years too late for that. A few days ago the wipers stopped working all together, looking into what the recall issue was, it seemed straight forward. Some of the contact points on the wiper circuit board lose contact over time. The fix is easy, take the board out, freshen the contact points with some solder, and reinstall. This was one of the easiest and most straight forward things I’ve done. It took about 10 minutes total to remove the board, repair it, and reinstall. Every time I do something on this truck I am shocked that it works when I turn it on, but after this fix the wipers seem great. And if they go out again, now I know the solution. (Note: the red stuff on the board is wax. I think it was dipped in that to protect it. But with the temperatures here, that was must melt completely everyday and then solidify at night)</p><div id="3363acbb-85b8-4ce1-9191-22a7e765b96b" class="column-list"><div id="7afabdc0-547a-4c1f-888f-237ebce4db66" style="width:50%" class="column"><figure id="e94ba455-6e8e-4c73-9a40-97aa19ba4cb1" class="image"><a href="Truck%20Project/IMG_4332_Large.jpeg"><img style="width:331.9921875px" src="../images/IMG_4332_Large.jpeg"/></a><figcaption>I drove around with the wipers “on” for a week, hoping they would magically fix themselves.</figcaption></figure></div><div id="a6270906-519f-4592-bd16-d21883385b94" style="width:50%" class="column"><figure id="8f6d608f-46b6-4336-90e4-e07efc630e1e" class="image"><a href="Truck%20Project/IMG_4333_Large.jpeg"><img style="width:331.9921875px" src="../images/IMG_4333_Large.jpeg"/></a><figcaption>The beauty of an old truck like this is it is easy to find stuff under the hood. This black box houses the wiper board and motor.</figcaption></figure></div></div><figure id="333c0a2e-a850-4de0-9466-8f4922f74313" class="image"><a href="Truck%20Project/IMG_4334_Large.jpeg"><img style="width:432px" src="../images/IMG_4334_Large.jpeg"/></a><figcaption>I added some fresh solder to the shining contact points here and just like that the wipers were working again.</figcaption></figure><hr id="b46fc0a7-cb53-43a9-ad86-ae61c95e0dfd"/><h2 id="42682a17-ef3b-4823-b227-8b317086bae5" class="">Striking Oil Doesn&#x27;t Always Make You Rich</h2><p id="74471531-080d-4f1b-8ff1-282785ec1fea" class="">I had some small oil leaks a while back that I thought I had fixed. But Then one morning I walked out to my truck and the only way I could describe it was &quot;soupy&quot;. I was dripping oil from some of the cooling lines. When I got under it, the entire bottom seemed to be soaked in oil. And worst of all, when I popped the hood there was oil in the coolant (you never want that). After a bunch of research and tests, it looked like a combo of the radiator and the oil lines. Both were probably original to the truck so it wasn&#x27;t surprising that they were leaky after 30 years. Changing the lines was a messy job but once it was done, there was no more oil leaking out of the truck. As for the radiator, I ended up folding and taking it to a shop. Once they got that swapped out the coolant has been clean ever since.</p><hr id="076e401c-708b-42ab-9e55-dca83db07fd7"/><h2 id="c7412553-1401-43fc-8a86-18c4c30735e9" class="">Hunting For A Short</h2><p id="c8c90b98-1386-4e20-9535-ff22521c710c" class="">After the entire oil fiasco things were good for a while. And then one day while I was out on the highway my dash panel started going berserk. All the gauges were bouncing all over the place and the lights were flashing. Had to be a short, but I didn&#x27;t know where. I spent weeks testing different buttons and knobs as I drove trying to track it down. Every once in a while, all the electronics would go nuts again. I tried to retrace my steps but couldn&#x27;t figure it out. Eventually, I figured it had to be my amateur electrical work on the light bars. So, I popped the engine to take a look and was greeted by the spray of AC coolant. Turns out the A/C had cracked at some point and was spraying coolant right onto the battery terminals. Hello short! It was surprising because the AC seemed to have been working pretty well despite the crack. But once I swapped that out, I realized it hadn&#x27;t been cooling that well. As soon as I did that the short went away as well.</p><hr id="6c9c79b1-796d-47d1-b367-b0d3832aa765"/><h2 id="1f2afd66-02a4-4642-94f0-8dd85dd74782" class="">The Power of a Forty-Dollar Piece of Plastic</h2><p id="8ec66f61-f68c-44cc-8cc5-55ebe16111eb" class="">Lately, the truck has been idling rough and being a little jumpy when it starts up. I assumed spark plugs and changed those. But it didn&#x27;t help, and things kept getting worse. No check engine lights or ODB codes were firing. I kept researching and finally found the issue. The throttle position sensor. A $40 piece of plastic that does exactly what its name implies, tells the computer the position of the throttle was causing the issues. I changed that out and things calmed down a lot. It&#x27;s still a bit rough so I&#x27;m going to change out the belts and a few other sensors. But it is crazy how such a small thing can have such a big impact on performance.</p><hr id="540ac83c-e63a-4075-8fbd-ab22076213dd"/><h2 id="4ede22fe-664f-4e41-a7ff-fb72f3d3e6a8" class="">What’s Next?</h2><p id="b6221bd9-087c-4713-aad9-0cf6ffdd3001" class="">Despite all the work I’ve done there is still a lot I’d like to do over time:</p><ul id="61421b09-c51f-476c-a4c7-92c18829b83d" class="bulleted-list"><li style="list-style-type:disc">New steering wheel, shift arm and levers</li></ul><ul id="8dbe8dbc-0f3e-4e63-b1a6-c759d6f51e6f" class="bulleted-list"><li style="list-style-type:disc">Lift kit</li></ul><ul id="1b41411e-5b65-48f8-beae-84894a6fbc9b" class="bulleted-list"><li style="list-style-type:disc">Swap all the lights for LEDs</li></ul><p id="7aa06690-31af-419e-a5d5-3bc34192652d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
