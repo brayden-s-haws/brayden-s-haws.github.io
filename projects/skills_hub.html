@@ -1,0 +1,731 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>PM Skills Hub</title>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		@media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+			white-space: normal;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 10px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+			margin: 1em 0;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.collection-content td {
+			white-space: pre-wrap;
+			word-break: break-word;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li > ol:first-child,
+		li > ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul > li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			padding-inline-start: 0;
+		}
+
+		ul.to-do-list > li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle > li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul > li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol > li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol > li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle > li > details {
+			padding-left: 1.7em;
+		}
+
+		.toggle > li > details > summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.page-description {
+			margin-bottom: 2em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+			empty-cells: show;
+		}
+		.simple-table td {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table th {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table-header-color {
+			background: rgb(247, 246, 243);
+			color: black;
+		}
+		.simple-table-header {
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.callout img.notion-static-icon {
+			width: 1em;
+			height: 1em;
+		}
+
+		.callout p {
+			margin: 0;
+		}
+
+		.callout h1,
+		.callout h2,
+		.callout h3 {
+			margin: 0 0 0.6rem;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			max-height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p > .user {
+			opacity: 0.5;
+		}
+
+		td > .user,
+		td > time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code > code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		blockquote.quote-large {
+			font-size: 1.25em;
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+		.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+		.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+		.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+		.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+		.highlight-default {
+			color: rgba(44, 44, 43, 1);
+		}
+		.highlight-gray {
+			color: rgba(125, 122, 117, 1);
+			fill: rgba(125, 122, 117, 1);
+		}
+		.highlight-brown {
+			color: rgba(159, 118, 90, 1);
+			fill: rgba(159, 118, 90, 1);
+		}
+		.highlight-orange {
+			color: rgba(210, 123, 45, 1);
+			fill: rgba(210, 123, 45, 1);
+		}
+		.highlight-yellow {
+			color: rgba(203, 148, 52, 1);
+			fill: rgba(203, 148, 52, 1);
+		}
+		.highlight-teal {
+			color: rgba(80, 148, 110, 1);
+			fill: rgba(80, 148, 110, 1);
+		}
+		.highlight-blue {
+			color: rgba(56, 125, 201, 1);
+			fill: rgba(56, 125, 201, 1);
+		}
+		.highlight-purple {
+			color: rgba(154, 107, 180, 1);
+			fill: rgba(154, 107, 180, 1);
+		}
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+		.highlight-red {
+			color: rgba(207, 81, 72, 1);
+			fill: rgba(207, 81, 72, 1);
+		}
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+		.block-color-gray {
+			color: rgba(125, 122, 117, 1);
+			fill: rgba(125, 122, 117, 1);
+		}
+		.block-color-gray_background {
+			background: rgba(240, 239, 237, 1);
+		}
+		.block-color-blue_background {
+			background: rgba(229, 242, 252, 1);
+		}
+		.block-color-teal_background {
+			background: rgba(232, 241, 236, 1);
+		}
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<article id="pm-skills-hub" class="page sans">
+		<header>
+			<h1 class="page-title">PM Skills Hub</h1>
+			<p class="page-description"></p>
+		</header>
+		<div class="page-body">
+
+			<p id="intro" class="">
+				I built PM Skills Hub to solve a problem I kept running into: product managers are using Claude Code skills constantly, for research, writing documents, communications, and more;
+				but sharing those skills with each other is surprisingly hard. Most skills are tailored to a specific company, codebase, or workflow, which makes them difficult to hand off without a lot of manual cleanup. I wanted to fix that.
+			</p>
+
+			<hr id="divider-1"/>
+
+			<h2 id="problem">The Problem with Skills Today</h2>
+			<p id="problem-1" class="">
+				Skills for AI agents have become a core part of how PMs work. Whether you're in your day job or working on side projects, there's a skill for almost everything. But sharing them is another story.
+			</p>
+			<p id="problem-2" class="">
+				You could dump them all into a GitHub repo, but then someone else has to figure out how to make them work for their context. Other skill libraries exist, but they're not segmented for product managers and they often have thousands of entries with no real curation. And crucially, when someone shares a skill, it's usually tied to their specific company, their specific codebase, their specific tools. The person downloading it has to reverse-engineer all of that customization before it's useful to them.
+			</p>
+			<p id="problem-3" class="">
+				I wanted to build something that solved all three of those problems at once: a curated, PM-specific catalog with a workflow that handles the customization problem automatically.
+			</p>
+
+			<hr id="divider-2"/>
+
+			<h2 id="solution">The Solution: A Skill Marketplace Backed by GitHub</h2>
+			<p id="solution-1" class="">
+				PM Skills Hub is a web application where product managers can browse, preview, download, and contribute Claude Code skills. The backend is entirely GitHub: skills are stored as
+				files in a public repository, contributions are submitted as pull requests (abstracted away from the user, no Git knowledge required), and a <code>registry.json</code> index file
+				powers the frontend catalog.
+			</p>
+			<p id="solution-2" class="">
+				Skills are organized into eight categories: PRDs, Release Notes, Ideation, User Research, Strategy, Tech Specs, Retros, and OKRs. PMs can quickly find what's relevant to their
+				current work. Browsing, searching, previewing, and downloading all work without any login. You only need to sign in with GitHub when you want to submit a skill or star one you find useful.
+			</p>
+
+			<hr id="divider-3"/>
+
+			<h2 id="browsing">Browsing and Previewing Skills</h2>
+			<p id="browsing-1" class="">
+				The main interface is a searchable, filterable catalog. You can filter by category, sort by most downloaded or most starred, and do a real-time fuzzy search across skill names, descriptions, and tags. When you find something interesting, clicking the card opens a preview panel that slides in from the right.
+			</p>
+			<p id="browsing-2" class="">
+				Inside the preview panel, you get three views of the skill: a rendered markdown preview that shows you exactly how the skill is formatted and structured, a raw SKILL.md tab where
+				you can copy the full text, and a CONFIG.md tab that explains how to customize the skill for your specific team and context. That last tab is something I'm particularly proud of,
+				more on it below.
+			</p>
+			<p id="browsing-3" class="">
+				When you're ready to install a skill, you download a ZIP file containing both the SKILL.md skill itself and the CONFIG.md customization guide. You unzip it into your Claude Code
+				skills directory and you're done. One of the best ways to get started is to point your agent at the CONFIG.md file and ask it to review the customization options and tailor the
+				skill to your specific context, it can make quick work of filling in the details that would otherwise take you time to track down.
+			</p>
+
+			<hr id="divider-4"/>
+
+			<h2 id="adaptation">The AI Adaptation Pipeline</h2>
+			<p id="adaptation-1" class="">
+				This is the core innovation of the project. When someone submits a skill, it goes through an AI processing step before it's posted to the marketplace. The Anthropic API analyzes the uploaded skill and does four things: it replaces company names and product references with generic terms, anonymizes employee names and replaces them with role descriptions, updates internal URLs with placeholder equivalents, and broadens hardcoded tool configurations to support multiple tools (for example, turning a hardcoded Jira project key into an option that works with Jira, Linear, or GitHub Issues).
+			</p>
+			<p id="adaptation-2" class="">
+				The contributor then sees a review screen that shows exactly what changed. They can accept the adapted version, edit it further, or go back and start over. Nothing gets submitted
+				without the contributor's explicit sign-off.
+			</p>
+			<p id="adaptation-3" class="">
+				Alongside the adapted SKILL.md, the AI also generates a CONFIG.md file that serves as a customization guide for whoever downloads the skill. It explains what was generalized and
+				why, shows before/after examples, and tells you exactly what to replace with your own values. So when you download a skill, you're not just getting a generic template, you're
+				getting a map that shows you how to make it yours.
+			</p>
+
+			<hr id="divider-5"/>
+
+			<h2 id="submission">The Submission Flow</h2>
+			<p id="submission-1" class="">
+				Submitting a skill is a four-step guided process. You fill in the skill name, description, category, and tags, then upload your SKILL.md file. The app immediately scans it for
+				security issues, if there are bash scripts or other potentially problematic content, it flags them before anything else happens. Once the file is clean, the AI adaptation pipeline
+				runs.
+			</p>
+			<p id="submission-2" class="">
+				After you review and approve the adapted version, submitting triggers a GitHub Action that creates a pull request in the hub repository with the adapted SKILL.md and the generated
+				CONFIG.md. I review the PR, and once it's merged, a second GitHub Action automatically rebuilds the registry, which is what powers the frontend catalog. Your skill shows up live within a few hours of being merged.
+			</p>
+
+			<hr id="divider-6"/>
+
+			<h2 id="architecture">How the Backend Works</h2>
+			<p id="architecture-1" class="">
+				The entire backend is GitHub. There's no custom database or server. Each skill lives in a folder under its category, containing the SKILL.md and CONFIG.md files.
+				The manifest stores metadata like the author, version, tags, download count, and an array of GitHub usernames who have starred the skill.
+			</p>
+			<p id="architecture-2" class="">
+				Two GitHub Actions do the heavy lifting. The first runs on every pull request and validates the submission: it checks that all required files are present, that the skill content
+				meets minimum length requirements, and that there are no duplicate skills. The second runs on every merge to main and rebuilds the <code>registry.json</code> file, reading every
+				skill's SKILL.md content and merging it into a flat array, then committing the updated file. The frontend fetches this single file on load and handles all filtering and search client-side, with no per-skill API calls needed.
+			</p>
+			<p id="architecture-3" class="">
+				Authentication is GitHub OAuth, which also gives the app the permissions it needs to create forks and pull requests on behalf of contributors. The app stores only the user's public
+				profile on the client side, the OAuth token never leaves the server.
+			</p>
+
+			<hr id="divider-7"/>
+
+			<h2 id="demo">See It in Action</h2>
+			<p id="demo-1" class="">
+				Here's a walkthrough of the full experience: browsing the catalog, previewing a skill, and going through the submission flow including the AI adaptation step:
+			</p>
+			<figure id="demo-video">
+				<video width="100%" controls>
+					<source src="../videos/Skills_Hub.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</figure>
+
+			<hr id="divider-8"/>
+
+			<h2 id="reflections">What I Learned Building This</h2>
+			<p id="reflections-1" class="">
+				Using GitHub as a backend was the right call for this project. It gave me version history, a built-in review workflow, automated CI/CD through Actions, and a public audit trail for every skill submission. The main constraint is rate limits, which become relevant if the app ever gets real traffic. But for an MVP, it's a clean architecture that removes a lot of complexity.
+			</p>
+			<p id="reflections-2" class="">
+				The hardest design problem was the adaptation pipeline. Writing the system prompt for the Anthropic API required a lot of iteration to get the right balance: aggressive enough to catch company-specific references, but conservative enough not to strip out legitimate generic PM content. The key was being explicit about what to preserve (standard PM frameworks like RICE and JTBD, universally applicable tool names like Jira and Slack when offered as options) versus what to replace (hardcoded specific instances of those same tools).
+			</p>
+			<p id="reflections-3" class="">
+				The CONFIG.md concept turned out to be one of the most valuable parts of the project. It transforms the act of downloading a skill from a guessing game into a guided setup process. I
+				hadn't fully planned it from the start, it emerged as I thought about what a downloader actually needs to make a skill useful. Sometimes the best features come from following the
+				user's journey all the way to the end.
+			</p>
+			<p id="reflections-4" class="">
+				Want to browse the catalog or share a skill of your own? <a href="https://pm-skill-hub.replit.app">The app is live and open to contributions.</a>
+			</p>
+
+		</div>
+	</article>
+	<span class="sans" style="font-size:14px;padding-top:2em"></span>
+</body>
+</html>
